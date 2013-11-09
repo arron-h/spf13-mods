@@ -1,0 +1,27 @@
+" Arron's local .vimrc.bundles file
+
+" Override spf13's bundle groups
+let g:spf13_bundle_groups=['general', 'misc']
+
+" Lets define some better programming bundles.
+" Syntax highlighting
+Bundle 'scrooloose/syntastic'
+
+" Comment blocks
+Bundle 'scrooloose/nerdcommenter'
+
+" Text alignment
+Bundle 'godlygeek/tabular'
+
+" Tagbar, if ctags is available
+if executable('ctags')
+	Bundle 'majutsushi/tagbar'
+endif
+
+" Better CPP support
+Bundle 'octol/vim-cpp-enhanced-highlight'
+
+" Code completion
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'SirVer/ultisnips'
+
