@@ -7,8 +7,12 @@
 nmap [d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " ------- Font and GUI configuration
-" Use a better font
-set guifont=Source\ Code\ Pro\ for\ Powerline:h12
+" Use a better font. Font names are different on OSX and Linux.
+if has("gui_macvim")
+    set guifont=Source\ Code\ Pro\ for\ Powerline:h12
+else
+    set guifont=Source\ Code\ Pro\ for\ Powerline\ 10
+endif
 
 " ------- Code completion configuration
 " Disable AutoComplPop at startup
