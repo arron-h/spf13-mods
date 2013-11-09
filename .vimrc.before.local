@@ -1,0 +1,9 @@
+"
+" Arron's .vimrc.before.local file.
+"
+" This file is loaded by .vimrc at the beginning of the file.
+"
+" ------- Font and GUI configuration
+" Customize vim-airline
+let g:airline_powerline_fonts = 1    " Use powerline fonts
+
