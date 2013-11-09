@@ -9,12 +9,12 @@ Installation
 Just drop these files at ~/.
 Some things you'll need to do once you've done that:
 * Download and install a Powerline-patched font from: <https://github.com/Lokaltog/powerline-fonts>
-*  I like Source Code Pro, and it needs to be converted from otf to ttf before it's installed.
-*  On Ubuntu I had to add: set guifont=Source\ Code\ Pro\ for\ Powerline\ 10 to ~/.gvimrc for gvim to pick it up.
+  * I like Source Code Pro, and it needs to be converted from otf to ttf before it's installed.
+    * On Ubuntu I had to add: set guifont=Source\ Code\ Pro\ for\ Powerline\ 10 to ~/.gvimrc for gvim to pick it up.
 * Run :BundleClean! and :BundleInstall to add/remove the new bundles.
 * Compile YCM
-*  Navigate to ~/.vim/bundles/YouCompleteMe/
-*  run ./install.sh --clang-completer
+  * Navigate to ~/.vim/bundles/YouCompleteMe/
+  * run ./install.sh --clang-completer
 
 Plugins
 =======
