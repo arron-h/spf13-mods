@@ -8,6 +8,12 @@ let g:spf13_bundle_groups=['general', 'misc']
 " Syntax checking
 Bundle 'scrooloose/syntastic'
 
+" Git integration
+Bundle 'tpope/vim-fugitive'
+
+" SCM helpers
+Bundle 'mhinz/vim-signify'
+
 " Better commenting
 Bundle 'scrooloose/nerdcommenter'
 
