@@ -11,7 +11,7 @@ Bundle 'scrooloose/syntastic'
 " Git integration
 Bundle 'tpope/vim-fugitive'
 
-" SCM helpers
+" SCM helpers - Add signify to help manager source controller other than git.
 Bundle 'mhinz/vim-signify'
 
 " Better commenting
