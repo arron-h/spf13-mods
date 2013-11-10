@@ -4,7 +4,8 @@
 " This file is loaded by .vimrc at the end of the file.
 " 
 " ------- Key mappings
-nmap [d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap ]d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap ]r :YcmForceCompileAndDiagnostics<CR>
 
 " ------- Font and GUI configuration
 " Use a better font. Font names are different on OSX and Linux.
@@ -41,4 +42,27 @@ endif
 " When enabled, there can be too much visual noise
 " especially when splits are used.
 set completeopt-=preview
+
+function! YcmConfigCompleter(ArgLead, CmdLine, CursorPos)
+    return ['c', 'cpp']
+endfunction
+
+function! YcmConfig(...)
+    let s:c_flags=['\"-x\"', '\"c\"']
+    let s:cpp_flags=['\"-x\"', '\"c++\"']
+    let s:base_flags=['\"-Wall\"']
+    if a:0 == 1
+        if a:1 == 'c'
+            let s:comp_flags = extend(s:base_flags, s:c_flags)
+        elseif a:1 == 'cpp'
+            let s:comp_flags = extend(s:base_flags, s:cpp_flags)
+        endif
+    endif
+
+    let s:python_flags=join(s:comp_flags, ',\n')
+    let s:python_func='def FlagsForFile(filename,**kwargs):\n\treturn { \"flags\": flags, \"do_cache\": True }'
+    exe ':silent ! echo "import ycm_core\n\nflags = [\n'.s:python_flags.',\n]\n\n'.s:python_func.'\n" > .ycm_extra_conf.py'
+    execute 'split .ycm_extra_conf.py'
+endfunction
+command! -nargs=? -complete=customlist,YcmConfigCompleter YcmConfig :call YcmConfig(<f-args>)
 
