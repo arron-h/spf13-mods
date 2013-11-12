@@ -6,6 +6,8 @@
 " ------- Key mappings
 nmap ]d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap ]r :YcmForceCompileAndDiagnostics<CR>
+noremap j <up>
+noremap k <down>
 
 " ------- Font and GUI configuration
 " Use a better font. Font names are different on OSX and Linux.
