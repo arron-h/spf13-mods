@@ -6,8 +6,6 @@
 " ------- Key mappings
 nmap ]d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap ]r :YcmForceCompileAndDiagnostics<CR>
-noremap j <up>
-noremap k <down>
 
 " ------- Font and GUI configuration
 " Use a better font. Font names are different on OSX and Linux.
@@ -16,6 +14,10 @@ if has("gui_macvim")
 else
     set guifont=Source\ Code\ Pro\ for\ Powerline\ 10
 endif
+
+" Allow Tagbar to autofocus when opened and to close when a tag is selected.
+let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 1
 
 " ------- Plugin removal. This has to be done in this here due to ordering.
 " Remove gitgutter as we're using signify instead.
