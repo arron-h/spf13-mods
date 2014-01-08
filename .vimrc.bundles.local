@@ -1,9 +1,6 @@
 "
 " Arron's local .vimrc.bundles file
 "
-" Override spf13's bundle groups
-let g:spf13_bundle_groups=['general']
-
 " ------- Programming bundles
 " Syntax checking
 Bundle 'scrooloose/syntastic'
