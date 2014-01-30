@@ -31,3 +31,5 @@ if executable('ctags')
 	Bundle 'majutsushi/tagbar'
 endif
 
+" Switch between H/C files
+Bundle 'derekwyatt/vim-fswitch'

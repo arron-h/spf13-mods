@@ -4,10 +4,16 @@
 " This file is loaded by .vimrc at the end of the file.
 " 
 " ------- Key mappings
-nmap ]d :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nmap ]r :YcmForceCompileAndDiagnostics<CR>
+map <F2> :FSHere<CR>
+map <S-F2> :FSSplitRight<CR>
+map <F3> :YcmDiags<CR>
+map <S-F3> :YcmForceCompileAndDiagnostics<CR>
+map <F4> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " ------- Font and GUI configuration
+" Set the column indicator for 80 characters
+set colorcolumn=80
+
 " Use a better font. Font names are different on OSX and Linux.
 if has("gui_macvim")
     set guifont=Source\ Code\ Pro\ for\ Powerline:h12
