@@ -16,4 +16,6 @@ Some things you'll need to do once you've done that:
 * Compile YCM
   * Navigate to ~/.vim/bundles/YouCompleteMe/
   * run ./install.sh --clang-completer
+* Optional:
+  * Setup JSHint+Syntastic using the following instruction: <http://stackoverflow.com/questions/473478/vim-jslint/5893447#5893447>
 
