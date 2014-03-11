@@ -3,6 +3,9 @@
 "
 " This file is loaded by .vimrc at the end of the file.
 " 
+" ------- Formatting
+set noexpandtab
+
 " ------- Key mappings
 map <F2> :FSHere<CR>
 map <S-F2> :FSSplitRight<CR>

@@ -33,3 +33,6 @@ endif
 
 " Switch between H/C files
 Bundle 'derekwyatt/vim-fswitch'
+
+" Handlebars support in JS.
+Bundle 'mustache/vim-mustache-handlebars'
