@@ -28,34 +28,10 @@ endif
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
 
-" ------- Plugin removal. This has to be done in this here due to ordering.
-" Remove gitgutter as we're using signify instead.
-UnBundle 'airblade/vim-gitgutter'
-
-" ------- Code completion configuration
-" Disable AutoComplPop at startup
-let g:acp_enableAtStartup = 0
-
 " Have syntastic check the syntax on opening a file
 let g:syntastic_check_on_open = 1
 
-" Enable completion from tags
-let g:ycm_collect_identifiers_from_tags_files = 1
-
-" Remap Ultisnips for compatibility for YCM
-let g:UltiSnipsExpandTrigger       = '<C-j>'
-let g:UltiSnipsJumpForwardTrigger  = '<C-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-
-if has('conceal')
-	set conceallevel=2 concealcursor=i
-endif
-
-" Disable the neosnippet preview candidate window
-" When enabled, there can be too much visual noise
-" especially when splits are used.
-set completeopt-=preview
-
+" Generate a blank Ycm config file
 function! YcmConfigCompleter(ArgLead, CmdLine, CursorPos)
     return ['c', 'cpp']
 endfunction

@@ -2,34 +2,9 @@
 " Arron's local .vimrc.bundles file
 "
 " ------- Programming bundles
-" Syntax checking
-Bundle 'scrooloose/syntastic'
-
-" Git integration
-Bundle 'tpope/vim-fugitive'
-
-" SCM helpers - Add signify to help manager source controller other than git.
-Bundle 'mhinz/vim-signify'
-
-" Better commenting
-Bundle 'scrooloose/nerdcommenter'
-
-" Text alignment
-Bundle 'godlygeek/tabular'
 
 " CPP function and method highlighting
 Bundle 'octol/vim-cpp-enhanced-highlight'
-
-" Autocompletion using Clang
-Bundle 'Valloric/YouCompleteMe'
-
-" Snippet support
-Bundle 'SirVer/ultisnips'
-
-" Tagbar, if ctags is available
-if executable('ctags')
-	Bundle 'majutsushi/tagbar'
-endif
 
 " Switch between H/C files
 Bundle 'derekwyatt/vim-fswitch'
