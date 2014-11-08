@@ -3,6 +3,9 @@
 "
 " This file is loaded by .vimrc at the end of the file.
 " 
+" ------- Unbundle some of spf13's plugins
+UnBundle 'spf13/vim-colors'
+
 " ------- Formatting
 set noexpandtab
 
@@ -14,8 +17,15 @@ map <S-F3> :YcmForceCompileAndDiagnostics<CR>
 map <F4> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " ------- Font and GUI configuration
-" Set the column indicator for 80 characters
-set colorcolumn=80
+" Set the column indicator
+let &colorcolumn="80,".join(range(120,500),",")
+
+" Set the theme and tweak it a little
+let g:molokai_original = 0
+let g:rehash256        = 1
+colorscheme molokai
+
+let g:airline_theme='badwolf'
 
 " Use a better font. Font names are different on OSX and Linux.
 if has("gui_macvim")
