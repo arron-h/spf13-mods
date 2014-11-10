@@ -4,22 +4,24 @@
 " This file is loaded by .vimrc at the end of the file.
 " 
 " ------- Unbundle some of spf13's plugins
+"               ____________
+"______________/ Unbundling \___________________________________"
 UnBundle 'spf13/vim-colors'
 
-" ------- Formatting
+"               ____________
+"______________/ Formatting \___________________________________"
 set noexpandtab
 
-" ------- Key mappings
-map <F2> :FSHere<CR>
+"               ______________
+"______________/ Key Mappings \_________________________________"
+map <F2>   :FSHere<CR>
 map <S-F2> :FSSplitRight<CR>
-map <F3> :YcmDiags<CR>
+map <F3>   :YcmDiags<CR>
 map <S-F3> :YcmForceCompileAndDiagnostics<CR>
-map <F4> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <F4>   :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" ------- Font and GUI configuration
-" Set the column indicator
-let &colorcolumn="80,".join(range(120,500),",")
-
+"               ___________________
+"______________/ Fonts and Colours \____________________________"
 " Set the theme and tweak it a little
 let g:molokai_original = 0
 let g:rehash256        = 1
@@ -34,14 +36,24 @@ else
     set guifont=Source\ Code\ Pro\ for\ Powerline\ 10
 endif
 
+"               ________
+"______________/ Layout \_______________________________________"
+" Set the column indicator
+let &colorcolumn="80,".join(range(120,500),",")
+
+"               ___________
+"______________/ Operation \____________________________________"
+" Have syntastic check the syntax on opening a file
+let g:syntastic_check_on_open = 1
+
 " Allow Tagbar to autofocus when opened and to close when a tag is selected.
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
 
-" Have syntastic check the syntax on opening a file
-let g:syntastic_check_on_open = 1
 
-" Generate a blank Ycm config file
+"               _______________ _______________
+"______________/ Functionality / YCM Additions \________________"
+" Generate a blank YCM config file
 function! YcmConfigCompleter(ArgLead, CmdLine, CursorPos)
     return ['c', 'cpp']
 endfunction
@@ -64,4 +76,23 @@ function! YcmConfig(...)
     execute 'split .ycm_extra_conf.py'
 endfunction
 command! -nargs=? -complete=customlist,YcmConfigCompleter YcmConfig :call YcmConfig(<f-args>)
+
+"               _______________ _____________________
+"______________/ Functionality / UltiSnips key fixes \__________"
+function! g:UltiSnips_Complete()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips#JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<C-J>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
+
+au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 
