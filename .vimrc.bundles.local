@@ -1,8 +1,8 @@
 "
 " Arron's local .vimrc.bundles file
 "
-" ------- Programming bundles
-
+"               __________
+"______________/ Bundling \___________________________________"
 " CPP function and method highlighting
 Bundle 'octol/vim-cpp-enhanced-highlight'
 

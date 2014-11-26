@@ -2,7 +2,7 @@
 " Arron's .vimrc.before.local file.
 "
 " This file is loaded by .vimrc at the beginning of the file.
-
+"
 "               ___________________________
 "______________/ vim-airline customization \___________________"
 if has("gui_running")
