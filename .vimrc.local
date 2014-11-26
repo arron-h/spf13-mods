@@ -29,10 +29,12 @@ colorscheme molokai
 
 let g:airline_theme='badwolf'
 
-" Use a better font. Font names are different on OSX and Linux.
+" Use a better font. Font names are different on OSX and Linux and Win32
 if has("gui_macvim")
     set guifont=Source\ Code\ Pro\ for\ Powerline:h12
-else
+elseif has("gui_win32")
+    set guifont=Sauce_Code_Powerline:h11
+elseif has("gui_gtk")
     set guifont=Source\ Code\ Pro\ for\ Powerline\ 10
 endif
 
@@ -54,45 +56,48 @@ let g:tagbar_autoclose = 1
 "               _______________ _______________
 "______________/ Functionality / YCM Additions \________________"
 " Generate a blank YCM config file
-function! YcmConfigCompleter(ArgLead, CmdLine, CursorPos)
-    return ['c', 'cpp']
-endfunction
+if count(g:spf13_bundle_groups, 'youcompleteme')
+    function! YcmConfigCompleter(ArgLead, CmdLine, CursorPos)
+        return ['c', 'cpp']
+    endfunction
 
-function! YcmConfig(...)
-    let s:c_flags=['\"-x\"', '\"c\"']
-    let s:cpp_flags=['\"-x\"', '\"c++\"']
-    let s:base_flags=['\"-Wall\"']
-    if a:0 == 1
-        if a:1 == 'c'
-            let s:comp_flags = extend(s:base_flags, s:c_flags)
-        elseif a:1 == 'cpp'
-            let s:comp_flags = extend(s:base_flags, s:cpp_flags)
+    function! YcmConfig(...)
+        let s:c_flags=['\"-x\"', '\"c\"']
+        let s:cpp_flags=['\"-x\"', '\"c++\"']
+        let s:base_flags=['\"-Wall\"']
+        if a:0 == 1
+            if a:1 == 'c'
+                let s:comp_flags = extend(s:base_flags, s:c_flags)
+            elseif a:1 == 'cpp'
+                let s:comp_flags = extend(s:base_flags, s:cpp_flags)
+            endif
         endif
-    endif
 
-    let s:python_flags=join(s:comp_flags, ',\n')
-    let s:python_func='def FlagsForFile(filename,**kwargs):\n\treturn { \"flags\": flags, \"do_cache\": True }'
-    exe ':silent ! echo "import ycm_core\n\nflags = [\n'.s:python_flags.',\n]\n\n'.s:python_func.'\n" > .ycm_extra_conf.py'
-    execute 'split .ycm_extra_conf.py'
-endfunction
-command! -nargs=? -complete=customlist,YcmConfigCompleter YcmConfig :call YcmConfig(<f-args>)
+        let s:python_flags=join(s:comp_flags, ',\n')
+        let s:python_func='def FlagsForFile(filename,**kwargs):\n\treturn { \"flags\": flags, \"do_cache\": True }'
+        exe ':silent ! echo "import ycm_core\n\nflags = [\n'.s:python_flags.',\n]\n\n'.s:python_func.'\n" > .ycm_extra_conf.py'
+        execute 'split .ycm_extra_conf.py'
+    endfunction
+    command! -nargs=? -complete=customlist,YcmConfigCompleter YcmConfig :call YcmConfig(<f-args>)
+endif
 
 "               _______________ _____________________
 "______________/ Functionality / UltiSnips key fixes \__________"
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<C-J>"
+if count(g:spf13_bundle_groups, 'youcompleteme')
+    function! g:UltiSnips_Complete()
+        call UltiSnips#ExpandSnippet()
+        if g:ulti_expand_res == 0
+            if pumvisible()
+                return "\<C-n>"
+            else
+                call UltiSnips#JumpForwards()
+                if g:ulti_jump_forwards_res == 0
+                   return "\<C-J>"
+                endif
             endif
         endif
-    endif
-    return ""
-endfunction
+        return ""
+    endfunction
 
-au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-
+    au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+endif

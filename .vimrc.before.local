@@ -2,10 +2,19 @@
 " Arron's .vimrc.before.local file.
 "
 " This file is loaded by .vimrc at the beginning of the file.
-"
-" ------- Font and GUI configuration
-" Customize vim-airline
-let g:airline_powerline_fonts = 1    " Use powerline fonts
 
-" Override spf13's bundle groups
-let g:spf13_bundle_groups=['general', 'programming', 'youcompleteme', 'javascript',  'python', 'writing', 'html', 'misc']
+"               ___________________________
+"______________/ vim-airline customization \___________________"
+if has("gui_running")
+	let g:airline_powerline_fonts = 1
+else
+	let g:airline_powerline_fonts = 0
+endif
+
+"               __________________
+"______________/ Bundle Overrides \____________________________"
+if has("win32")
+	let g:spf13_bundle_groups=['general', 'programming', 'neocomplcache', 'javascript',  'python', 'writing', 'html', 'misc']
+else
+	let g:spf13_bundle_groups=['general', 'programming', 'youcompleteme', 'javascript',  'python', 'writing', 'html', 'misc']
+endif
