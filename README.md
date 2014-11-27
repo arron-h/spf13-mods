@@ -1,12 +1,14 @@
 spf13-mods
 ==========
 
-My own mods to spf13's great vim bundle. Removed some unneeded features, and changed the completion engine.
+My own mods to [spf13's great vim bundle](http://vim.spf13.com). Removed some unneeded features, and changed the completion engine.
+Works well on all platforms. On Windows I use [neocomplcache](https://github.com/Shougo/neocomplcache.vim) as opposed to [YouCompleteMe](https://github.com/Valloric/YouCompleteMe).
 
 ## Installation
 
-1. Clone this repo to somewhere like`~/spf13-mods`
-2. Symlink `.vimrc.local`, `.vimrc.before.local` and `.vimrc.bundles.local` to files of the same name located at `~/`.
+1. Install [spf13-vim](http://vim.spf13.com) as [described](http://vim.spf13.com/#install).
+2. Clone this repo to somewhere like`~/spf13-mods`
+3. Symlink `.vimrc.local`, `.vimrc.before.local` and `.vimrc.bundles.local` to files of the same name located at `~/`.
 
 Some things you'll need to do once you've done that:
 
@@ -16,10 +18,12 @@ Some things you'll need to do once you've done that:
   * On Windows just download, right-click and hit 'Install'.
 * Run :BundleClean! and :BundleInstall to add/remove the new bundles.
 
-### Unix-based Systems Only
+### Unix-based systems only
 
 * Compile YCM
   * Navigate to ~/.vim/bundles/YouCompleteMe/
   * run ./install.sh --clang-completer
-* Optional:
-  * Setup JSHint+Syntastic using the following instruction: <http://stackoverflow.com/questions/473478/vim-jslint/5893447#5893447>
+
+### Optional steps
+
+* Setup JSHint+Syntastic using the following instruction: <http://stackoverflow.com/questions/473478/vim-jslint/5893447#5893447>
