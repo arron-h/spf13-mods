@@ -51,6 +51,9 @@ let g:syntastic_check_on_open = 1
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
 
+" Use a global .ycm_extra_conf file, to suppress annoying warnings when
+" opening cpp files.
+let g:ycm_global_ycm_extra_conf = "~/.ycm_global_extra_conf.py"
 
 "               _______________ _______________
 "______________/ Functionality / YCM Additions \________________"
