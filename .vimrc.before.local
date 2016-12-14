@@ -18,3 +18,9 @@ if has("win32")
 else
 	let g:spf13_bundle_groups=['general', 'programming', 'youcompleteme', 'javascript',  'python', 'writing', 'html', 'misc']
 endif
+
+" Use local-local before if available {
+    if filereadable(expand("~/.vimrc.before.local.local"))
+        source ~/.vimrc.before.local.local
+    endif
+" }

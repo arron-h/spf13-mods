@@ -19,6 +19,11 @@ map <F3>   :YcmDiags<CR>
 map <S-F3> :YcmForceCompileAndDiagnostics<CR>
 map <F4>   :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+"               ________
+"______________/ Layout \_______________________________________"
+" Set the column indicator
+let &colorcolumn="80,".join(range(120,500),",")
+
 "               ___________________
 "______________/ Fonts and Colours \____________________________"
 " Set the theme and tweak it a little
@@ -37,10 +42,14 @@ elseif has("gui_gtk")
 	set guifont=Source\ Code\ Pro\ for\ Powerline\ 10
 endif
 
-"               ________
-"______________/ Layout \_______________________________________"
-" Set the column indicator
-let &colorcolumn="80,".join(range(120,500),",")
+" Disable some colours for Win32 command line
+if has("win32")
+	if !has("gui_running")
+		set colorcolumn=0
+		set nocursorline
+	endif
+endif
+
 
 "               ___________
 "______________/ Operation \____________________________________"
